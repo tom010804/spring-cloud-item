@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: feign-item
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+feign:
+  hystrix:
+    enabled: true
+MICROSERVICE-ORDER:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
