@@ -38,7 +38,10 @@ public class MyFilter extends ZuulFilter {
         String uri = request.getRequestURI();
         //判断路径是否过滤
         //是：不过滤 false  否 ：不是登录 true
-        if (uri.contains("/user/login")){//不过滤
+        if (uri.contains("/page/login")){//不过滤
+            return false;
+        }
+        if (uri.contains("/page/singOn")){//不过滤
             return false;
         }
         return true;

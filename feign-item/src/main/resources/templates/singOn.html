@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../js/bootstrap/bootstrap3/css/bootstrap.css">
+    <link rel="stylesheet" href="../js/bootstrap/bootstrap3/css/bootstrap-theme.css">
+
+    <!-- 引入jquery文件 -->
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <!-- 引入bootstrap的js文件 -->
+    <script type="text/javascript" src="../js/bootstrap/bootstrap3/js/bootstrap.min.js"></script>
+
+    <!-- 引入表格的css和js文件 -->
+    <link rel="stylesheet" href="../js/bootstrap/bootstrap-table/bootstrap-table.css">
+    <script src="../js/bootstrap/bootstrap-table/bootstrap-table.js"></script>
+    <script src="../js/bootstrap/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+
+    <!-- 引入弹框的js文件 -->
+    <script src="../js/bootstrap/bootstrap-bootbox/bootbox.js"></script>
+
+    <!-- 引入日期得css和js文件 -->
+    <script src="../js/bootstrap/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="../js/bootstrap/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+</head>
+<style>
+    .navbar-default {
+        background-color: rgba(94, 114, 228, 1);
+    }
+</style>
+<body class="">
+    <nav class="navbar navbar-default">
+        <div style="width: 100%;height: 80px;background-color: rgba(94, 114, 228, 1);margin-top: -20px;">
+            <h1 style="color: white;padding-top: 20px;">垃圾回收平台·门店注册</h1>
+        </div>
+<!--        <div class="container-fluid">
+            <div class="navbar-header">
+
+            </div>
+        </div>-->
+    </nav>
+    <div id="divle">
+        <div class="container">
+            <div>
+                <h2>注册须知</h2>
+            </div>
+            <div style="height: 800px;">
+                <h3>1、我在OMINI回收已经开了个店了，我用别人的身份证再开一个店可以吗？</h3>
+                <h6>
+                    ：不可以。未经OMINI回收平台同意，将本人OMINI回收账号提供给他人做开店使用，由此导致相关争议，诉讼及因店铺经营中的违法违规行为导致一切人身，财产权益损害，均由本人自行承担全部民事、行政及刑事责任。
+                </h6>
+                <h3>、开企业店铺需要满足什么条件？</h3>
+                <h6>
+                    答：企业开店需完成支付宝认证和责任人认证，店铺负责人需要对该OMINI回收店铺的运营及管理全面负责，包含但不限于：该企业的法定代表人、股东、OMINI回收店铺的运营人等，具体请参考：企业店铺开店流程。
+                </h6>
+                <h3>
+                    3、我可以开多个店铺吗？
+                </h3>
+                <h6>
+                    答：同一会员已开设的店铺均须同时满足以下要求，才能获得多店权益：
+                    （一）近365天无出售假冒商品违规、严重违规、一般违规扣分达12分（含）以上等违规记录，且无其他风险特征；
+                    （二）满足一定经营条件（如近365天确认收货金额>=120万且近12个自然月持续有成交）
+                </h6>
+                <h3>
+                    4、我已经开过OMINI回收店，现在想要注销原来的店铺重新开店，可以吗?
+                </h3>
+                <h6>
+                    答：满足条件就可以注销。具体请参考：如何注销OMINI回收店铺。
+                </h6>
+            </div>
+            <div>
+                <button type="button" onclick="jujue()" class="btn btn-danger">拒绝</button>
+                <button type="button" onclick="tongyi()" class="btn btn-info">我已经同意</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function jujue(){
+        location.href="../page/login";
+    }
+
+    function tongyi(){
+        $("#divle").html("")
+    }
+</script>
+</html>

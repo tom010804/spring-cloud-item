@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../js/bootstrap/bootstrap3/css/bootstrap.css">
+    <link rel="stylesheet" href="../js/bootstrap/bootstrap3/css/bootstrap-theme.css">
+
+    <!-- 引入jquery文件 -->
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <!-- 引入bootstrap的js文件 -->
+    <script type="text/javascript" src="../js/bootstrap/bootstrap3/js/bootstrap.min.js"></script>
+
+    <!-- 引入表格的css和js文件 -->
+    <link rel="stylesheet" href="../js/bootstrap/bootstrap-table/bootstrap-table.css">
+    <script src="../js/bootstrap/bootstrap-table/bootstrap-table.js"></script>
+    <script src="../js/bootstrap/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+
+    <!-- 引入弹框的js文件 -->
+    <script src="../js/bootstrap/bootstrap-bootbox/bootbox.js"></script>
+
+    <!-- 引入日期得css和js文件 -->
+    <script src="../js/bootstrap/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="../js/bootstrap/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+</head>
+<style>
+    .font_color{
+        color: white;
+    }
+
+    .video_back {
+        width: 100% !important;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        z-index: -9999;
+        object-fit: fill;
+    }
+    #parent{
+        position:absolute;
+    }
+</style>
+<body style="background-color: rgba(94, 114, 228, 1)">
+    <div style="width: 100%;height: 80px">
+        <div style="margin-left: 1350px">
+            <span class="font_color">手机端</span>
+            <span class="font_color">关于</span>
+            <span class="font_color">加入我们</span>
+        </div>
+    </div>
+    <div class="parent">
+        <video class="video_back" src="<%=request.getContextPath()%>/image/66.mp4" muted autoplay="autoplay" loop="loop">
+        </video>
+        <form id="userForm" method="post">
+            <div class="form-group" style="width: 400px;height: 400px;background-color: white;border-radius:25px;margin-left: 800px;" align="center">
+                <div class="row" style="padding-top: 50px;margin-left: 20px;">
+                    <div class="col-md-2">
+                        <label>账号:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <!--<span class="glyphicon glyphicon-user" aria-hidden="true"></span>-->
+                        <input type="text" name="userPhone" class="form-control" placeholder="请输入用户名/手机号">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 30px;margin-left: 35px;">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>密码:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="password" name="userPwd" class="form-control" placeholder="请输入密码">
+                        </div>
+                    </div>
+                </div>
+                <button onclick="login()" type="button" class="btn btn-info">登录</button>
+                <button onclick="singOn()" type="button" class="btn btn-info">注册门店</button>
+            </div>
+
+        </form>
+    </div>
+</body>
+    <script>
+        function singOn(){
+            location.href="../page/singOn";
+        }
+    </script>
+</html>

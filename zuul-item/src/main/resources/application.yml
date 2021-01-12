@@ -18,4 +18,5 @@ zuul:
     api‐a:
       path: /api‐a/**
       serviceId: feign-item
+  sensitive-headers:
 
