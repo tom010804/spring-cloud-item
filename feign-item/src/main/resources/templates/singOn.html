@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>垃圾回收平台·注册</title>
     <link rel="stylesheet" href="../js/bootstrap/bootstrap3/css/bootstrap.css">
     <link rel="stylesheet" href="../js/bootstrap/bootstrap3/css/bootstrap-theme.css">
 
@@ -23,13 +23,17 @@
     <script src="../js/bootstrap/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
     <script src="../js/bootstrap/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
     <link rel="stylesheet" href="../js/bootstrap/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+    <!-- 引入bootstap的fileinput文件 -->
+    <script src="../js/bootstrap/bootstrap-fileinput/js/fileinput.js"></script>
+    <script src="../js/bootstrap/bootstrap-fileinput/js/locales/zh.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap/bootstrap-fileinput/css/fileinput.css">
 </head>
 <style>
     .navbar-default {
         background-color: rgba(94, 114, 228, 1);
     }
 </style>
-<body class="">
+<body style="background-color: ghostwhite;">
     <nav class="navbar navbar-default">
         <div style="width: 100%;height: 80px;background-color: rgba(94, 114, 228, 1);margin-top: -20px;">
             <h1 style="color: white;padding-top: 20px;">垃圾回收平台·门店注册</h1>
@@ -40,17 +44,17 @@
             </div>
         </div>-->
     </nav>
-    <div id="divle">
+    <div >
         <div class="container">
             <div>
-                <h2>注册须知</h2>
+                <h2 id="h2">注册须知</h2>
             </div>
-            <div style="height: 800px;">
+            <div id="divle" style="height: 600px;margin-top: 100px;background-color: white;padding: 20px;border-radius: 20px;">
                 <h3>1、我在OMINI回收已经开了个店了，我用别人的身份证再开一个店可以吗？</h3>
                 <h6>
-                    ：不可以。未经OMINI回收平台同意，将本人OMINI回收账号提供给他人做开店使用，由此导致相关争议，诉讼及因店铺经营中的违法违规行为导致一切人身，财产权益损害，均由本人自行承担全部民事、行政及刑事责任。
+                    答：不可以。未经OMINI回收平台同意，将本人OMINI回收账号提供给他人做开店使用，由此导致相关争议，诉讼及因店铺经营中的违法违规行为导致一切人身，财产权益损害，均由本人自行承担全部民事、行政及刑事责任。
                 </h6>
-                <h3>、开企业店铺需要满足什么条件？</h3>
+                <h3>2、开企业店铺需要满足什么条件？</h3>
                 <h6>
                     答：企业开店需完成支付宝认证和责任人认证，店铺负责人需要对该OMINI回收店铺的运营及管理全面负责，包含但不限于：该企业的法定代表人、股东、OMINI回收店铺的运营人等，具体请参考：企业店铺开店流程。
                 </h6>
@@ -68,21 +72,214 @@
                 <h6>
                     答：满足条件就可以注销。具体请参考：如何注销OMINI回收店铺。
                 </h6>
+                <div style="float: bottom;float: right">
+                    <input id="fuxuan" type="checkbox"/>我已同意此协议
+                </div>
+ <!--               <div id="" style="height: 600px;margin-top: 100px;background-color: white;padding: 20px;border-radius: 20px;">
+                    <form class="form-horizontal">
+                        <div class="form-group"><label class="col-sm-1 control-label">手机号</label><div class="col-sm-3"><input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="请输入十一位手机号"></div></div><div class="form-group"><label class="col-sm-1 control-label">验证码</label><div class="col-sm-2"><input type="text" class="form-control" id="userCode" placeholder="请输入验证码"></div><div class="col-sm-1"><button type="button" onclick="getCode()" class="btn btn-default">获取验证码</button></div></div><div class="form-group"><label class="col-sm-1 control-label">门店名称</label><div class="col-sm-3"><input type="text" class="form-control" placeholder="请输入门店名称"></div></div><div class="form-group"><label class="col-sm-1 control-label">门店位置</label><div class="col-sm-3"><input type="text" class="form-control" placeholder="请输入门店位置"></div></div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">门店LOGO</label>
+                            <div class="col-sm-3"><input type="hidden" id="hideImg2" name="credentials"><input type="file" multiple="" class="projectfile"  id="inputImg2" accept="image/*" name="fileimg"></div>
+                        </div>
+                    </form>
+                </div>-->
             </div>
-            <div>
-                <button type="button" onclick="jujue()" class="btn btn-danger">拒绝</button>
-                <button type="button" onclick="tongyi()" class="btn btn-info">我已经同意</button>
+            <div style="float: right" id="divButton">
+                <button type="button" onclick="jujue()" class="btn btn-danger btn btn-primary btn-lg">拒绝</button>
+                <button type="button" onclick="tongyi(0)" class="btn btn-primary btn-lg">我已同意</button>
             </div>
         </div>
     </div>
 </body>
 <script>
+    //upload();
+    //获取验证码
+    function getCode(){
+        var userPhone = $("#userPhone").val();
+        $.ajax({
+            url:"../user/getCodeClient",
+            data:{userPhone:userPhone},
+            success:function(data){
+                alert(data);
+            }
+        })
+    }
+
+    //拒绝协议  跳转到登录界面
     function jujue(){
         location.href="../page/login";
     }
 
-    function tongyi(){
-        $("#divle").html("")
+    //同意协议 进入到门店描述页面
+    function tongyi(a1){
+        if ($("#fuxuan").is(':checked') || a1 == 1){
+           // $(document).ready(function () {
+                $("#divle").html(
+                    '<form class="form-horizontal" id="userForm">'+
+                    '<div class="form-group">'+
+                    '<label class="col-sm-1 control-label">手机号</label>'+
+                    '<div class="col-sm-3">'+
+                    '<input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="请输入十一位手机号">'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="form-group">'+
+                    '<label class="col-sm-1 control-label">验证码</label>'+
+                    '<div class="col-sm-2">'+
+                    '<input type="text" class="form-control" id="userCode" name="userCode" placeholder="请输入验证码">'+
+                    '</div>'+
+                    '<div class="col-sm-1">'+
+                    '<button type="button" onclick="getCode()" class="btn btn-default">获取验证码</button>'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="form-group">'+
+                    '<label class="col-sm-1 control-label">门店名称</label>'+
+                    '<div class="col-sm-3">'+
+                    '<input type="text" class="form-control" name="shopName" placeholder="请输入门店名称">'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="form-group">'+
+                    '<label class="col-sm-1 control-label">门店位置</label>'+
+                    '<div class="col-sm-3">'+
+                    '<input type="text" class="form-control" name="shopLocation" placeholder="请输入门店位置">'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="form-group">'+
+                    '<label class="col-sm-1 control-label">门店LOGO</label>'+
+                    '<div class="col-sm-3">'+
+                    '<input type="hidden" id="hideImg2" name="shopLogo"/>'+
+                    '<input type="file" multiple class="projectfile" accept="image/*" name="shopLogoImg" id="inputImg2">'+
+                    '</div>'+
+                    '</div>'+
+                    '</form>'
+                );
+                $("#divButton").html(
+                    '<button type="button" onclick="previousStep()" class="btn btn-default btn-primary btn-lg">上一步</button>'+
+                    '<button type="button" onclick="nextStep()" class="btn btn-info btn-primary btn-lg">下一步</button>'
+                )
+                $("#h2").html("门店描述");
+
+                //setTimeout(upload,3000);
+            //});
+            upload();
+        }else {
+            alert("请同意协议");
+        }
+
+    }
+
+    //上一步
+    function previousStep(){
+        location.href="../page/singOn"
+    }
+
+    //下一步
+    function nextStep(){
+        ////新增用户信息并进行验证码验证
+        $.ajax({
+            url:'../user/redisUserClient',//后台请求地址
+            data:$("#userForm").serialize(),//表单序列化
+            success:function(data){
+                if(data=="验证码错误"){
+                    alert(data);
+                }else{
+                    //显示门店资质信息填写
+                    $("#divle").html(
+                        '<form class="form-horizontal" id="userForm2">'+
+                            '<div class="form-group">'+
+                                '<label class="col-sm-1 control-label">注册人姓名</label>'+
+                                '<div class="col-sm-3">'+
+                                    '<input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="请输入注册人真实姓名">'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<label class="col-sm-1 control-label">注册人身份证号</label>'+
+                                '<div class="col-sm-3">'+
+                                    '<input type="text" class="form-control" id="userCode" placeholder="请输入注册人身份证号">'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<label class="col-sm-1 control-label">注册名称</label>'+
+                                '<div class="col-sm-3">'+
+                                    '<input type="text" class="form-control" placeholder="请输入注册名称">'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<label class="col-sm-1 control-label">社会信用代码证号</label>'+
+                                '<div class="col-sm-3">'+
+                                    '<input type="text" class="form-control" placeholder="请输入社会信用代码证号">'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<label class="col-sm-1 control-label">税务登记证号</label>'+
+                                '<div class="col-sm-3">'+
+                                    '<input type="text" class="form-control" placeholder="请输入税务登记证号">'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<label class="col-sm-1 control-label">注册地址</label>'+
+                                '<div class="col-sm-3">'+
+                                    '<input type="text" class="form-control" placeholder="请输入注册地址">'+
+                                '</div>'+
+                            '</div>'+
+                        '</form>'
+                    );
+
+                    //门店资质按钮
+                    $("#divButton").html(
+                        '<button type="button" onclick="previousStep2()" class="btn btn-default btn-primary btn-lg">上一步</button>'+
+                        '<button type="button" onclick="ok()" class="btn btn-info btn-primary btn-lg">完成</button>'
+                    );
+                    $("#h2").html("资质上传");
+                }
+            }
+        });
+    }
+
+    function previousStep2(){
+        tongyi(1);
+    }
+
+    function script1(){
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "../js/bootstrap/bootstrap-fileinput/js/locales/zh.js";
+        document.body.appendChild(script);
+    }
+    function script2(){
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "../js/bootstrap/bootstrap-fileinput/js/fileinput.js";
+        document.body.appendChild(script);
+    }
+    function link1(){
+        var link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        link.href = "../js/bootstrap/bootstrap-fileinput/css/fileinput.css";
+        document.getElementsByTagName("head")[0].appendChild(link);
+    }
+
+
+    //门店LOGO
+    function upload() {
+        $('#inputImg2').fileinput({
+            language: 'zh', //设置语言
+            uploadUrl: '../oss/upload', //上传的地址
+            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+            showUpload: true, //是否显示上传按钮
+            showCaption: false,//是否显示标题
+            browseClass: "btn btn-primary", //按钮样式
+            maxFileCount: 2, //表示允许同时上传的最大文件个数
+            enctype: 'multipart/form-data',
+            validateInitialCount:true,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+
+        }).on('fileuploaded', function(event, data, previewId, index) {
+            var imgval = data.response.img;
+            $('#hideImg2').val(imgval);
+        });
     }
 </script>
 </html>

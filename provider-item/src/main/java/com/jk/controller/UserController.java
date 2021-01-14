@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * Created by IntelliJ IDEA.
  * User: 李旺
- * Date: 2021/1/12
- * Time: 19:18
+ * Date: 2021/1/13
+ * Time: 10:45
  */
 @Controller
 @RequestMapping("user")
@@ -21,23 +21,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("singOnClient")
+    //获取短信验证码
+    @RequestMapping("getCode")
     @ResponseBody
-    public String singOnClient(UserBean userBean){
-        return userService.singOn(userBean);
-    }
-
-    //获取验证码
-    @RequestMapping("getCodeClient")
-    @ResponseBody
-    public String getCodeClient(String userPhone){
+    public String getCode(String userPhone){
         return userService.getCode(userPhone);
     }
 
-    //将门店信息存入到redis
-    @RequestMapping("redisUserClient")
+    //新增用户信息并进行验证码验证
+    @RequestMapping("redisUser")
     @ResponseBody
-    public String redisUserClient(UserBean userBean){
+    public String redisUser(@RequestBody UserBean userBean){
         return userService.redisUser(userBean);
     }
 }

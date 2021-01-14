@@ -23,4 +23,19 @@ public class PageController {
     public String singOn(){
         return "singOn";
     }
+    //跳转主页面
+    @RequestMapping("index")
+    public String index(){
+        return "index";
+    }
+    //跳转回收订单页面
+    @RequestMapping("hsOrder")
+    public String hsOrder(){
+        return "hsOrder";
+    }
+    //跳转兑换订单页面
+    @RequestMapping("dhOrder")
+    public String dhOrder(){
+        return "dhOrder";
+    }
 }

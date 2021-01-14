@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.dao.OrderDao">
+
+    <select id="findHsOrderTotal" resultType="int">
+        select count(1) from t_order where orderIStatus = 1
+    </select>
+    <select id="findHsOrder" resultType="com.jk.pojo.OrderBean">
+        select * from t_order where orderIStatus = 1  limit #{start},#{rows}
+    </select>
+    <select id="findDhOrderTotal" resultType="int">
+        select count(1) from t_order where orderIStatus = 2
+    </select>
+    <select id="findDhOrder" resultType="com.jk.pojo.OrderBean">
+        select * from t_order where orderIStatus = 2  limit #{start},#{rows}
+    </select>
+
+</mapper>

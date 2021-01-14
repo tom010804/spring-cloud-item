@@ -32,4 +32,7 @@ public class UserBean {
     private String certificateNumber;//税务登记号码
     private String signInArea;//注册地址
     private String userSfz;//用户身份证
+
+    //业务字段
+    private String userCode;
 }
