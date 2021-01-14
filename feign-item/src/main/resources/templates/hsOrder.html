@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../js/bootstrap/bootstrap3/css/bootstrap.css">
-    <link rel="stylesheet" href="../js/bootstrap/bootstrap3/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="https://education-tm.oss-cn-beijing.aliyuncs.com/js/bootstrap/bootstrap3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://education-tm.oss-cn-beijing.aliyuncs.com/js/bootstrap/bootstrap3/css/bootstrap-theme.css">
 
     <!-- 引入jquery文件 -->
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <!--<script type="text/javascript" src="../js/jquery.min.js"></script>-->
+    <script type="text/javascript" src="https://education-tm.oss-cn-beijing.aliyuncs.com/js/jquery.min.js"></script>
     <!-- 引入bootstrap的js文件 -->
-    <script type="text/javascript" src="../js/bootstrap/bootstrap3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://education-tm.oss-cn-beijing.aliyuncs.com/js/bootstrap/bootstrap3/js/bootstrap.min.js"></script>
 
     <!-- 引入表格的css和js文件 -->
-    <link rel="stylesheet" href="../js/bootstrap/bootstrap-table/bootstrap-table.css">
-    <script src="../js/bootstrap/bootstrap-table/bootstrap-table.js"></script>
-    <script src="../js/bootstrap/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <link rel="stylesheet" href="https://education-tm.oss-cn-beijing.aliyuncs.com/js/bootstrap/bootstrap-table/bootstrap-table.css">
+    <script src="https://education-tm.oss-cn-beijing.aliyuncs.com/js/bootstrap/bootstrap-table/bootstrap-table.js"></script>
+    <script src="https://education-tm.oss-cn-beijing.aliyuncs.com/js/bootstrap/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
 
     <!-- 引入弹框的js文件 -->
-    <script src="../js/bootstrap/bootstrap-bootbox/bootbox.js"></script>
+    <script src="https://education-tm.oss-cn-beijing.aliyuncs.com/js/bootstrap/bootstrap-bootbox/bootbox.js"></script>
 
     <!-- 引入日期得css和js文件 -->
-    <script src="../js/bootstrap/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-    <script src="../js/bootstrap/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
-    <link rel="stylesheet" href="../js/bootstrap/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+    <script src="https://education-tm.oss-cn-beijing.aliyuncs.com/js/bootstrap/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="https://education-tm.oss-cn-beijing.aliyuncs.com/js/bootstrap/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <link rel="stylesheet" href="https://education-tm.oss-cn-beijing.aliyuncs.com/js/bootstrap/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
 </head>
 <body>
-    <button type="button" onclick="toAdd()" class="btn btn-default">新增</button>
     <table id="hsOrderTable" class="table"></table>
 </body>
     <script>
@@ -64,18 +64,7 @@
                 }
             })
         }
-        //删除方法
-        function delPhone(phoneId){
-            $.ajax({
-                url:"../phoneClient/delPhoneClient",
-                type:"delete",
-                data:{phoneId:phoneId},
-                success:function () {
-                    alert("删除成功！！！");
-                    $('#foodTable').bootstrapTable('refresh');//刷新表格
-                }
-            })
-        }
+
 
         var res;
         function createAddContent(url){
@@ -114,8 +103,6 @@
                     },
                 }
             });
-            //加载日期样式
-            initDate();
         }
 
         function toUpd(phoneId){
@@ -142,11 +129,11 @@
                     },
                 }
             });
-            initDate();
-            udp(phoneId);
+            /*initDate();
+            udp(phoneId);*/
         }
 
-        function udp(phoneId){
+        /*function udp(phoneId){
             $.ajax({
                 url:"../phoneClient/findPhoneByIdClient",
                 data:{phoneId:phoneId},
@@ -160,7 +147,7 @@
                     $("#phoneDate").val(data.phoneDate);
                 }
             })
-        }
+        }*/
 
 
         //加载日期样式

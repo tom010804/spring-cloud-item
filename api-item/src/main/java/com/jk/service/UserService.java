@@ -1,5 +1,6 @@
 package com.jk.service;
 
+import com.jk.pojo.FacilityBean;
 import com.jk.pojo.TreeBean;
 import com.jk.pojo.UserBean;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -19,21 +20,31 @@ import java.util.List;
 @FeignClient(value = "provider-item")
 public interface UserService {
 
+    //登录
     @RequestMapping("singOn")
     String singOn(@RequestBody UserBean userBean);
 
+    //获取验证码
     @RequestMapping("user/getCode")
     String getCode(@RequestParam String userPhone);
 
+    //短信验证以及增加注册信息
     @RequestMapping("user/redisUser")
     String redisUser(@RequestBody UserBean userBean);
 
+    //左侧树
     @RequestMapping("tree/findTree")
     List<TreeBean> findTree();
 
+    //查询回收订单信息
     @RequestMapping("order/findHsOrder")
     HashMap<String, Object> findHsOrder(@RequestParam int page, @RequestParam int rows);
 
+    //查询兑换订单信息
     @RequestMapping("order/findDhOrder")
     HashMap<String, Object> findDhOrder(@RequestParam int page, @RequestParam int rows);
+
+    //查询所有设备
+    @RequestMapping("facility/findFacility")
+    List<FacilityBean> findFacility();
 }
