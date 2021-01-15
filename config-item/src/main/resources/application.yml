@@ -1,0 +1,21 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: config-item
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/tom010804/config-item.git
+          search-paths:
+          username: 772775927@qq.com
+          password: 20010804lw
+
+      label: master
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+
