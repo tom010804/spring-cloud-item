@@ -13,7 +13,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://192.168.1.29:3306/item?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
     username: root
-    password:
+    password: 123
   data:
     mongodb:
       uri: mongodb://192.168.1.29:27017/tom
