@@ -12,4 +12,8 @@ public interface UserService {
     String getCode(String userPhone);
 
     String redisUser(UserBean userBean);
+
+    String userLogin(UserBean userBean);
+
+    String continueAddUser(UserBean userBean);
 }

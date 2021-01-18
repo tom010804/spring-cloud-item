@@ -27,12 +27,24 @@
 </head>
 <body>
     <div  class="container">
-        <form id="div-s" class="form-horizontal" id="userForm">
-            <div class="form-group">
-                <div class="col-sm-4">
-
-                </div>
-            </div>
+        <form  class="form-horizontal">
+            <!--<div class="col-sm-4">
+                <li>
+                    <ul>"+data.equipmentType+"</ul>
+                    <ul>"+data.equipmentImg+"</ul>
+                    <ul>"+data.equipmentReserves+"存储空间</ul>
+                    <ul>"+data.waterproofLevel+"级别防水,水下1米可以浸泡30分钟</ul>
+                    <ul>全钢加厚机身</ul>
+                    <ul>3D立体面板</ul>
+                    <ul>光电收获检测</ul>
+                    <ul>进口压缩机，自动压缩货物</ul>
+                    <ul>高亮LED照明</ul>
+                    <ul>智能云平台</ul>
+                </li>
+                <div>"+data.equipmentPrice+"/年</div>
+                <div><button onclick="shenqing('+data.id+')" type="button" class="btn btn-primary btn-lg">（大按钮）Large button</button></div>
+            </div>-->
+            <span id="div-s"></span>
         </form>
     </div>
 </body>
@@ -41,9 +53,24 @@
             $.ajax({
                 url:"../facility/findFacilityClient",
                 success:function(data){
-                    for (var i = 0; i < data.length();i++){
+                    for (var i = 0; i < data.length;i++){
                         $("#div-s").append(
-
+                        '<div class="col-sm-4">'+
+                                '<div>'+data[i].equipmentType+'</div>'+
+                                '<div style="height: 200px;"><img src="'+data[i].equipmentImg+'"/></div>'+
+                            '<ul>'+
+                                '<li>'+data[i].equipmentReserves+'存储空间</li>'+
+                                '<li>'+data[i].waterproofLevel+'级别防水,水下1米可以浸泡30分钟</li>'+
+                                '<li>全钢加厚机身</li>'+
+                                '<li>3D立体面板</li>'+
+                                '<li>光电收获检测</li>'+
+                                '<li>进口压缩机，自动压缩货物</li>'+
+                                '<li>高亮LED照明</li>'+
+                                '<li>智能云平台</li>'+
+                            '</ul>'+
+                            '<div style="width: 100%"><center><h4 style="color: red">'+data[i].equipmentPrice+'/年</h4></center></div>'+
+                            '<center style="width: 100%"><center><button onclick="shenqing('+data[i].id+')" type="button" class="btn btn-primary btn-lg">立即申请</button></center></div>'+
+                        '</div>'
                         )
                     }
                 }

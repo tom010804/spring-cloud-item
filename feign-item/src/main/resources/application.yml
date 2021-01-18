@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: feign-item
+  redis:
+    host: 192.168.1.29
+    port: 6379
+    session:
+      store-type: redis
 
 eureka:
   client:
@@ -12,6 +17,7 @@ eureka:
 feign:
   hystrix:
     enabled: true
+
 MICROSERVICE-ORDER:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

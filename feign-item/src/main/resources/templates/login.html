@@ -53,8 +53,6 @@
         </div>
     </div>
     <div class="parent">
-        <video class="video_back" src="<%=request.getContextPath()%>/image/66.mp4" muted autoplay="autoplay" loop="loop">
-        </video>
         <form id="userForm" method="post">
             <div class="form-group" style="width: 400px;height: 400px;background-color: white;border-radius:25px;margin-left: 800px;" align="center">
                 <div class="row" style="padding-top: 50px;margin-left: 20px;">
@@ -89,7 +87,17 @@
         }
 
         function login(){
-            location.href="../page/index";
+            $.ajax({
+                url:"../user/userLoginClient",
+                data:$("#userForm").serialize(),
+                success:function (data) {
+                    alert(data);
+                    if (data=="登陆成功！！！"){
+                        location.href="../page/index";
+                    }
+                }
+            })
+
         }
     </script>
 </html>

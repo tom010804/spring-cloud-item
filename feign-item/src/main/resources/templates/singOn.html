@@ -46,6 +46,7 @@
         </div>-->
     </nav>
     <div >
+
         <div class="container">
             <div>
                 <h2 id="h2">注册须知</h2>
@@ -118,6 +119,7 @@
            // $(document).ready(function () {
                 $("#divle").html(
                     '<form class="form-horizontal" id="userForm">'+
+
                     '<div class="form-group">'+
                     '<label class="col-sm-1 control-label">手机号</label>'+
                     '<div class="col-sm-3">'+
@@ -187,40 +189,41 @@
                     //显示门店资质信息填写
                     $("#divle").html(
                         '<form class="form-horizontal" id="userForm2">'+
+                            '<input id="useridhidden" name="userId"/>'+
                             '<div class="form-group">'+
                                 '<label class="col-sm-1 control-label">注册人姓名</label>'+
                                 '<div class="col-sm-3">'+
-                                    '<input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="请输入注册人真实姓名">'+
+                                    '<input type="text" class="form-control" id="userName" name="userName" placeholder="请输入注册人真实姓名">'+
                                 '</div>'+
                             '</div>'+
                             '<div class="form-group">'+
                                 '<label class="col-sm-1 control-label">注册人身份证号</label>'+
                                 '<div class="col-sm-3">'+
-                                    '<input type="text" class="form-control" id="userCode" placeholder="请输入注册人身份证号">'+
+                                    '<input type="text" class="form-control" name="userSfz\n" placeholder="请输入注册人身份证号">'+
                                 '</div>'+
                             '</div>'+
                             '<div class="form-group">'+
                                 '<label class="col-sm-1 control-label">注册名称</label>'+
                                 '<div class="col-sm-3">'+
-                                    '<input type="text" class="form-control" placeholder="请输入注册名称">'+
+                                    '<input type="text" class="form-control" name="signInName" placeholder="请输入注册名称">'+
                                 '</div>'+
                             '</div>'+
                             '<div class="form-group">'+
                                 '<label class="col-sm-1 control-label">社会信用代码证号</label>'+
                                 '<div class="col-sm-3">'+
-                                    '<input type="text" class="form-control" placeholder="请输入社会信用代码证号">'+
+                                    '<input type="text" class="form-control" name="socialCode" placeholder="请输入社会信用代码证号">'+
                                 '</div>'+
                             '</div>'+
                             '<div class="form-group">'+
                                 '<label class="col-sm-1 control-label">税务登记证号</label>'+
                                 '<div class="col-sm-3">'+
-                                    '<input type="text" class="form-control" placeholder="请输入税务登记证号">'+
+                                    '<input type="text" class="form-control" name="certificateNumber" placeholder="请输入税务登记证号">'+
                                 '</div>'+
                             '</div>'+
                             '<div class="form-group">'+
                                 '<label class="col-sm-1 control-label">注册地址</label>'+
                                 '<div class="col-sm-3">'+
-                                    '<input type="text" class="form-control" placeholder="请输入注册地址">'+
+                                    '<input type="text" class="form-control" name="signInArea" placeholder="请输入注册地址">'+
                                 '</div>'+
                             '</div>'+
                         '</form>'
@@ -232,9 +235,25 @@
                         '<button type="button" onclick="ok()" class="btn btn-info btn-primary btn-lg">完成</button>'
                     );
                     $("#h2").html("资质上传");
+
+                    if (data!="验证码错误"){
+                        $("#useridhidden").val(data);
+                    }
                 }
             }
         });
+    }
+
+
+    function ok(){
+        $.ajax({
+            url: '../user/continueAddUserClient',//后台请求地址
+            data: $("#userForm2").serialize(),//表单序列化
+            success: function (data) {
+                alert(data);
+
+            }
+        })
     }
 
     function previousStep2(){

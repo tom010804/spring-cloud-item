@@ -38,4 +38,15 @@ public class PageController {
     public String dhOrder(){
         return "dhOrder";
     }
+    //跳转到申请设备页面
+    @RequestMapping("facility1")
+    public String facility1(){
+        return "facility1";
+    }
+
+    //跳转到设备管理页面
+    @RequestMapping("facility2")
+    public String facility2(){
+        return "facility2";
+    }
 }

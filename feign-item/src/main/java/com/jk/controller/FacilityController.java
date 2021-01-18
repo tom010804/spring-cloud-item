@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -28,5 +29,11 @@ public class FacilityController {
     @ResponseBody
     public List<FacilityBean> findFacilityClient(){
         return userService.findFacility();
+    }
+
+    @RequestMapping("findFacilityMy")
+    @ResponseBody
+    public HashMap<String,Object> findFacilityMy(int page,int rows){
+        return userService.findFacilityMy();
     }
 }

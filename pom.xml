@@ -11,6 +11,11 @@
     <modules>
         <module>common-item</module>
         <module>api-item</module>
+        <module>eureka-item</module>
+        <module>config-item</module>
+        <module>zuul-item</module>
+        <module>feign-item</module>
+        <module>provider-item</module>
     </modules>
 
 

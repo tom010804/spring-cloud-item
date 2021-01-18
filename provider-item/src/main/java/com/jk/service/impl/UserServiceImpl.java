@@ -82,4 +82,24 @@ public class UserServiceImpl implements UserService {
             return "验证码错误";
         }
     }
+
+    @Override
+    public String userLogin(UserBean userBean) {
+        UserBean user = userDao.findUserPhone(userBean.getUserPhone());
+        if (user!=null){
+            if (userBean.getUserPwd().equals(user.getUserPwd())){
+                return "登陆成功！！！";
+            }else {
+                return "密码错误";
+            }
+        }else {
+            return "账号不存在";
+        }
+
+    }
+
+    @Override
+    public String continueAddUser(UserBean userBean) {
+        return userDao.continueAddUser(userBean);
+    }
 }

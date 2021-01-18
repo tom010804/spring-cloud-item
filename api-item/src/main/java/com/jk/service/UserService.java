@@ -47,4 +47,15 @@ public interface UserService {
     //查询所有设备
     @RequestMapping("facility/findFacility")
     List<FacilityBean> findFacility();
+
+    //登录
+    @RequestMapping("user/userLogin")
+    String userLogin(@RequestBody UserBean userBean);
+
+    @RequestMapping("user/continueAddUser")
+    String continueAddUser(UserBean userBean);
+
+    //查询我的设备
+    @RequestMapping("facility/findFacilityMy")
+    HashMap<String, Object> findFacilityMy();
 }

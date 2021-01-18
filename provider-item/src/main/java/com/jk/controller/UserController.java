@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by IntelliJ IDEA.
  * User: 李旺
@@ -33,5 +35,18 @@ public class UserController {
     @ResponseBody
     public String redisUser(@RequestBody UserBean userBean){
         return userService.redisUser(userBean);
+    }
+
+    //登录
+    @RequestMapping("userLogin")
+    @ResponseBody
+    public String userLogin(@RequestBody UserBean userBean){
+        return userService.userLogin(userBean);
+    }
+
+    @RequestMapping("continueAddUser")
+    @ResponseBody
+    public String continueAddUser(@RequestBody UserBean userBean){
+        return userService.continueAddUser(userBean);
     }
 }
